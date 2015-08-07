@@ -1,11 +1,13 @@
 // o formuário de exemplo é para avise me quando o produto nao tiver em estoque
-// pode ser replicado para qualquer formulário
+// inclua a bibliote jquery.validate.js
 
 $(".avise-me-alert form").validate({
     submitHandler: function( form ) { 
   
       var bloco_alert = $(form).closest(".avise-me-alert")
       var email_let_me = $(form).find('input[type=email]').val();
+      
+      // código customizado para lemonbasics.com
       var product_name = $("#product_name").val()
       var product_reference = $("#reference").val()
       var sku_in_variant = $("input[name='sku']:checked").val()
@@ -24,7 +26,6 @@ $(".avise-me-alert form").validate({
             sku_da_variante: sku_in_variant
           }
       })
-
       .always(function() {
         $(form).fadeOut();
         $(bloco_alert).find(".text").html("<span class='color--pink-regular'>E-mail cadastrado com sucesso!.. aguarde que em breve entraremos em contato.</span>")
